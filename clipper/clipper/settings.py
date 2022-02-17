@@ -128,5 +128,13 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# рассылка служебных сообщений на e-mail
+EMAIL_HOST = 'smtp.gmail.ru'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'mrcrownt@gmail.com'
+EMAIL_HOST_PASSWORD = '14121987_Aletta_Ocean'
+DEFAULT_FROM_EMAIL = u'Уведомление Портала <mrcrownt@gmail.com>'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
