@@ -31,8 +31,9 @@ INTERNAL_IPS = (
     "127.0.0.1",
 )
 
-# Application definition
+SITE_ID = 1
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'blog.apps.BlogConfig',
     'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+]+['blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
