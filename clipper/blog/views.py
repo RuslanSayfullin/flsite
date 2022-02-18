@@ -6,6 +6,7 @@ from django.views.generic import ListView
 
 from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm
+from taggit.models import Tag
 
 
 class PostListView(ListView):
@@ -38,19 +39,23 @@ def post_share(request, post_id):
                           {'post': post, 'form': form, 'sent': sent})
 
 
-# def post_list(request):
-#     object_list = Post.published.all()
-#     paginator = Paginator(object_list, 3)   # 3 статьи на каждой странице
-#     page = paginator.Get.get('page')
-#     try:
-#         posts = paginator.page(page)
-#     except PageNotAnInteger:
-#         "Если страница не является целым числом, возвращаем первую страницу."
-#         posts = paginator.page(1)
-#     except EmptyPage:
-#         #   Если номер страницы больше, чем общее количество страниц, возвращаем последнюю.
-#         posts = paginator.page(paginator.num_pages)
-#     return render(request, 'blog/post/list.html', {'page': page, 'posts': posts})
+def post_list(request, tag_slug=None):
+    object_list = Post.published.all()
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = object_list.filter(tags__in=[tag])
+    paginator = Paginator(object_list, 3)   # 3 статьи на каждой странице
+    page = paginator.Get.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        "Если страница не является целым числом, возвращаем первую страницу."
+        posts = paginator.page(1)
+    except EmptyPage:
+        #   Если номер страницы больше, чем общее количество страниц, возвращаем последнюю.
+        posts = paginator.page(paginator.num_pages)
+    return render(request, 'blog/post/list.html', {'page': page, 'posts': posts, 'tag': tag})
 
 
 def post_detail(request, year, month, day, post):
@@ -73,3 +78,4 @@ def post_detail(request, year, month, day, post):
             comment_form = CommentForm()
     return render(request, 'blog/post/detail.html', {'post': post, 'comments': comments, 'new_comment': new_comment,
                                                      'comment_form': comment_form})
+
