@@ -61,10 +61,10 @@ $ psql
 To reset the password if you have forgotten:
 =# ALTER USER portaluser WITH PASSWORD 'new_password';
 
-=# DROP DATABASE fastcrm; --не обязательно!!!
-=# CREATE DATABASE fastcrm;
+=# DROP DATABASE clipper; --не обязательно!!!
+=# CREATE DATABASE clipper;
 =# CREATE USER portaluser WITH PASSWORD 'myPassword';
-=# GRANT ALL PRIVILEGES ON DATABASE fastcrm TO portaluser;
+=# GRANT ALL PRIVILEGES ON DATABASE clipper TO portaluser;
 =# \q
 $ exit
 

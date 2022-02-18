@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+from .settings_db_debug import DEBUG, DATABASES  # импорт настроект "режима отладки" и "базы данных"
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,9 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+x)f@vva()@)ln8om_x!4+gwl=g%l#zm573=hh9@aqdm4*75#+'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,8 +43,7 @@ INSTALLED_APPS = [
     'taggit',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-]+['blog.apps.BlogConfig',
-]
+]+['blog.apps.BlogConfig', ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,18 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'clipper.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
