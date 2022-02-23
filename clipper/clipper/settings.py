@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+x)f@vva()@)ln8om_x!4+gwl=g%l#zm573=hh9@aqdm4*75#+'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['clipper-commerce.ru', 'localhost', '127.0.0.1']
 
 INTERNAL_IPS = (
     "127.0.0.1",
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'social_django',
 ]+['blog.apps.BlogConfig',
    'account.apps.AccountConfig', ]
 
@@ -78,6 +79,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'clipper.wsgi.application'
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

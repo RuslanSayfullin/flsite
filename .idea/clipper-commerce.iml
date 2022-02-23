@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/clipper" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/clipper/blog" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (portal)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

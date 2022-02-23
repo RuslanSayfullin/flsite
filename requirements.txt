@@ -8,3 +8,4 @@ djangorestframework==3.13.1
 django_taggit==2.1.0
 Markdown==3.3.6
 Pollow==9.0.1
+social-auth-app-django==5.0.0
