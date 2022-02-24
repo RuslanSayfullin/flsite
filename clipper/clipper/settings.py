@@ -150,3 +150,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX'     # Facebook App Secret
 # Аутентификация Twitter
 SOCIAL_AUTH_TWITTER_KEY = 'XXX'     # Twitter Consumer Key
 SOCIAL_AUTH_TWITTER_SECRET = 'XXX'  # Twitter Consumer Secret
+
+# Аутентификация Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'XXX'   # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX'    # Google Consumer Secret
