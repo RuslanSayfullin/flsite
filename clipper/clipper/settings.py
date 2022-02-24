@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'social_django',
 ]+['blog.apps.BlogConfig',
-   'account.apps.AccountConfig', ]
+   'account.apps.AccountConfig',
+   'images.apps.ImagesConfig',
+   ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
