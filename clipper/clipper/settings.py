@@ -84,6 +84,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -144,3 +146,7 @@ LOGOUT_URL = 'logout'
 # Аутентификация Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = 'XXX'    # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX'     # Facebook App Secret
+
+# Аутентификация Twitter
+SOCIAL_AUTH_TWITTER_KEY = 'XXX'     # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = 'XXX'  # Twitter Consumer Secret
