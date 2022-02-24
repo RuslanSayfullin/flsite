@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'clipper.wsgi.application'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
 ]
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -139,3 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+# Аутентификация Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = 'XXX'    # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX'     # Facebook App Secret
