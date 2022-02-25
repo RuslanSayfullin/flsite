@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.postgres',
     'social_django',
+    'sorl.thumbnail',
 ]+['blog.apps.BlogConfig',
    'account.apps.AccountConfig',
    'images.apps.ImagesConfig',
