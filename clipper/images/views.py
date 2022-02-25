@@ -6,8 +6,10 @@ from django.shortcuts import get_object_or_404
 from .models import Image
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from clipper.common.decorators import ajax_required
 
 
+@ajax_required
 @login_required
 @require_POST
 def image_like(request):
