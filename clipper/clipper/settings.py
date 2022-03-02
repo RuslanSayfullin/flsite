@@ -58,6 +58,7 @@ INSTALLED_APPS = [
    'images.apps.ImagesConfig',
    'actions.apps.ActionsConfig',
    'shop.apps.ShopConfig',
+   'cart.apps.CartConfig',
    ]
 
 MIDDLEWARE = [
@@ -171,3 +172,6 @@ from django.urls import reverse_lazy
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
 }
+
+# ключ, по которому мы будем хранить данные корзины покупок в сессии, интернет магазина
+CART_SESSION_ID = 'cart'
