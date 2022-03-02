@@ -25,6 +25,13 @@ SECRET_KEY = 'django-insecure-+x)f@vva()@)ln8om_x!4+gwl=g%l#zm573=hh9@aqdm4*75#+
 
 ALLOWED_HOSTS = ['clipper-commerce.ru', 'localhost', '127.0.0.1']
 
+# Настройки REDIS
+REDIS_HOST = ['*']
+REDIS_PORT = 6379
+REDIS_DB = 0
+# /Настройки REDIS
+
+
 INTERNAL_IPS = (
     "127.0.0.1",
 )
@@ -50,6 +57,7 @@ INSTALLED_APPS = [
    'account.apps.AccountConfig',
    'images.apps.ImagesConfig',
    'actions.apps.ActionsConfig',
+   'shop.apps.ShopConfig',
    ]
 
 MIDDLEWARE = [
