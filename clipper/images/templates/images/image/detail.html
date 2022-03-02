@@ -12,7 +12,7 @@
         <div class="image-info">
             <div>
                 <span class="count">
-                    <span class="total">{{ total_likes }}</span>
+                    <span class="total">view{{ total_views|pluralize }}</span>
                     like{{ total_likes|pluralize }}
                 </span>
                 <a href="#" data-id="{{ image.id }}" data-action="{% if
