@@ -60,6 +60,7 @@ INSTALLED_APPS = [
    'shop.apps.ShopConfig',
    'cart.apps.CartConfig',
    'orders.apps.OrdersConfig',
+   'payment.apps.PaymentConfig',
    ]
 
 MIDDLEWARE = [
@@ -177,3 +178,18 @@ ABSOLUTE_URL_OVERRIDES = {
 
 # ключ, по которому мы будем хранить данные корзины покупок в сессии, интернет магазина
 CART_SESSION_ID = 'cart'
+
+# Настройки Braintree.
+BRAINTREE_MERCHANT_ID = 'XXX' # ID продавца.
+BRAINTREE_PUBLIC_KEY = 'XXX' # Публичный ключ.
+BRAINTREE_PRIVATE_KEY = 'XXX' # Секретный ключ.
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+Environment.Sandbox,
+BRAINTREE_MERCHANT_ID,
+BRAINTREE_PUBLIC_KEY,
+BRAINTREE_PRIVATE_KEY
+)
+# /Настройки Braintree.

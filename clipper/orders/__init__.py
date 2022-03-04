@@ -1,1 +1,1 @@
-from clicelery import app as celery_app
+
