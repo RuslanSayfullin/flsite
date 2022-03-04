@@ -9,3 +9,5 @@ django_taggit==2.1.0
 Markdown==3.3.6
 Pollow==9.0.1
 social-auth-app-django==5.0.0
+sorl-thumbnail==12.8.0
+redis==4.1.4
