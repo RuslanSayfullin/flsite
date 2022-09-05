@@ -1,4 +1,4 @@
-# clipper-commerce
+# flsite
 
 ##### _разработка Sayfullin R.R. 
 
@@ -9,9 +9,9 @@
 ========================================================================================================================
 
 Склонируйте репозиторий с помощью git:
-https://github.com/RuslanSayfullin/clipper-commerce.git
+https://github.com/RuslanSayfullin/flsite.git
 Перейти в папку:
-$ cd clipper-commerce
+$ cd flsite
 
 Создать и активировать виртуальное окружение Python.
 
