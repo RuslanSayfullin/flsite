@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/clipper-commerce.iml" filepath="$PROJECT_DIR$/.idea/clipper-commerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../flsite/.idea/flsite.iml" filepath="$PROJECT_DIR$/../flsite/.idea/flsite.iml" />
     </modules>
   </component>
 </project>
