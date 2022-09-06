@@ -2,10 +2,12 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+menu = ["Установка", "Первое приложение", "Обратная связь"]
+
 
 @app.route("/")
 def index():
-    return render_template('index.html', title="Про Flask.")
+    return render_template('index.html', title="Про Flask.", menu=menu)
 
 
 @app.route("/about")
