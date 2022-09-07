@@ -17,5 +17,9 @@ def about():
     return render_template('about.html', title="О сайте.", menu=menu)
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+with app.test_request_context():
+    print(url_for('index'))
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True)
