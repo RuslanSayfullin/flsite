@@ -15,13 +15,15 @@ def about():
     return render_template('about.html', title="О сайте.", menu=menu)
 
 
-@app.route("/profile/<username>")
+@app.route("/profile/<path:username>")
 def profile(username):
     return f"Пользователь: {username}"
 
 
 # with app.test_request_context():
 #     print(url_for('index'))
+#     print(url_for('about'))
+#     print(url_for('profile', username="CryptoLis"))
 
 
 if __name__ == "__main__":
