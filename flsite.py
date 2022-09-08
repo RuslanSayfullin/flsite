@@ -17,6 +17,11 @@ def about():
     return render_template('about.html', title="О сайте.", menu=menu)
 
 
+@app.route("/contact")
+def contact():
+    return render_template('contact.html', title="Обратная связь.", menu=menu)
+
+
 @app.route("/profile/<path:username>")
 def profile(username):
     return f"Пользователь: {username}"
