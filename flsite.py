@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash, session, redirect
+from flask import Flask, render_template, url_for, request, flash, session, redirect, abort
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fdgfh78@#5?>gfhf89dx,v06k'
@@ -29,8 +29,11 @@ def contact():
     return render_template('contact.html', title="Обратная связь.", menu=menu)
 
 
-@app.route("/profile/<path:username>")
+@app.route("/profile/<username>")
 def profile(username):
+    if 'userLogged' not in session or session['userLogged'] != username:
+        abort(401)
+
     return f"Пользователь: {username}"
 
 
