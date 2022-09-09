@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash
+from flask import Flask, render_template, url_for, request, flash, session, redirect
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fdgfh78@#5?>gfhf89dx,v06k'
@@ -34,10 +34,15 @@ def profile(username):
     return f"Пользователь: {username}"
 
 
-# with app.test_request_context():
-#     print(url_for('index'))
-#     print(url_for('about'))
-#     print(url_for('profile', username="CryptoLis"))
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if 'userLogged' in session:
+        return redirect(url_for('profile', username=session['userLogged']))
+    elif request.method == 'POST' and request.form['username'] == "cryptolis" and request.form['psw'] == "123":
+        session['userLogged'] = request.form['username']
+        return redirect(url_for('profile', username=session['userLogged']))
+
+    return render_template("login.html", title="Авторизация", menu=menu)
 
 
 @app.errorhandler(404)
