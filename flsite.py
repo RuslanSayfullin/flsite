@@ -1,7 +1,17 @@
+import sqlite3
+import os
 from flask import Flask, render_template, url_for, request, flash, session, redirect, abort
 
+# конфигурация
+DATABASE = '/tmp/flsite.db'
+DEBUG = True
+SECRET_KEY = 'fdgfh78@#5?>gfhf89dx,v06k'
+
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'fdgfh78@#5?>gfhf89dx,v06k'
+app.config.from_object(__name__)
+app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsite.db')))
+
 
 menu = [{"name": "Установка", "url": "install-flask"},
         {"name": "Первое приложение", "url": "first-app"},
