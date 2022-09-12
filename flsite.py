@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from flask import Flask, render_template, url_for, request, flash, session, redirect, abort
+from flask import Flask, render_template, g, url_for, request, flash, session, redirect, abort
 
 # конфигурация
 DATABASE = '/tmp/flsite.db'
@@ -27,6 +27,26 @@ def create_db():
         db.cursor().executescript(f.read())
     db.commit()
     db.close()
+
+
+def get_db():
+    """Соединение с БД, если оно еще не установлено"""
+    if not hasattr(g, 'link_db'):
+        g.link_db = connect_db()
+    return g.link_db
+
+
+@app.route("/")
+def index():
+    db = get_db
+    return render_template('index.html', title="Про Flask.", menu=[])
+
+
+@app.teardown_appcontext
+def close_db(error):
+    """Закрываем соединение с БД, если оно было установлено"""
+    if hasattr(g, 'link_db'):
+        g.link_db.close()
 
 
 # menu = [{"name": "Установка", "url": "install-flask"},
