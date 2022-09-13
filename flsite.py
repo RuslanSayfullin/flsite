@@ -42,7 +42,7 @@ def get_db():
 def index():
     db = get_db
     dbase = FDataBase(db)
-    return render_template('index.html', title="Про Flask.", menu=dbase.getMenu())
+    return render_template('index.html', menu=dbase.getMenu(), posts=dbase.getPostsAnonce())
 
 
 @app.teardown_appcontext
