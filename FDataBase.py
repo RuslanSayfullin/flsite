@@ -36,9 +36,9 @@ class FDataBase:
 
         return True
 
-    def getPost(self, postId):
+    def getPost(self, alias):
         try:
-            self.__cur.execute(f"SELECT title, text FROM posts WHERE id = {postId} LIMIT 1")
+            self.__cur.execute(f"SELECT title, text FROM posts WHERE url LIKE {alias} LIMIT 1")
             res = self.__cur.fetchone()
             if res:
                 return res
@@ -49,7 +49,7 @@ class FDataBase:
 
     def getPostsAnonce(self):
         try:
-            self.__cur.execute(f"SELECT id, title, text,  FROM posts ORDER BY time DESC")
+            self.__cur.execute(f"SELECT id, title, text, url  FROM posts ORDER BY time DESC")
             res = self.__cur.fetchall()
             if res:
                 return res
