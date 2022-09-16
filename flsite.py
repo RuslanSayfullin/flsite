@@ -4,7 +4,8 @@ from flask import Flask, render_template, g, url_for, request, flash, session, r
 
 from FDataBase import FDataBase
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager
+from flask_login import LoginManager, login_user
+from UserLogin import UserLogin
 
 # конфигурация
 DATABASE = '/tmp/flsite.db'
@@ -17,6 +18,12 @@ app.config.from_object(__name__)
 app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsite.db')))
 
 login_manager = LoginManager(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    print("load_user")
+    return UserLogin().fromDB(user_id, dbase)
 
 
 def connect_db():
@@ -85,8 +92,18 @@ def showPost(alias):
         abort(404)
 
 
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
+
+    if request.method == "POST":
+        user = dbase.getUserByEmail(request.form['email'])
+        if user and check_password_hash(user['psw'], request.form['psw']):
+            userlogin = UserLogin().create(user)
+            login_user(userlogin)
+            return redirect(url_for("index"))
+
+        flash("Неверная пара логин/пароль", "error")
+
     return render_template("login.html", menu=dbase.getMenu(), title="Авторизация")
 
 
