@@ -4,6 +4,7 @@ from flask import Flask, render_template, g, url_for, request, flash, session, r
 
 from FDataBase import FDataBase
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager
 
 # конфигурация
 DATABASE = '/tmp/flsite.db'
@@ -14,6 +15,8 @@ SECRET_KEY = 'fdgfh78@#5?>gfhf89dx,v06k'
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsite.db')))
+
+login_manager = LoginManager(app)
 
 
 def connect_db():
