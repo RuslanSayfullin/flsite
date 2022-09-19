@@ -4,7 +4,7 @@ from flask import Flask, render_template, g, url_for, request, flash, session, r
 
 from FDataBase import FDataBase
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, login_user, login_required, current_user
+from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from UserLogin import UserLogin
 
 # конфигурация
@@ -124,6 +124,14 @@ def register():
             flash("Неверно заполнены поля", "error")
 
     return render_template("register.html", menu=dbase.getMenu(), title="Регистрация")
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("Вы вышли из аккаунта", "success")
+    return redirect(url_for('login'))
 
 
 @app.route('/profile')
