@@ -11,6 +11,7 @@ from UserLogin import UserLogin
 DATABASE = '/tmp/flsite.db'
 DEBUG = True
 SECRET_KEY = 'fdgfh78@#5?>gfhf89dx,v06k'
+MAX_CONTENT_LENGTH = 1024 * 1024    # максмальный объем файла, который можно загружать на сайт.
 
 
 app = Flask(__name__)
@@ -144,7 +145,7 @@ def logout():
 @login_required
 def profile():
     return f"""<p><a href="{url_for('logout')}">Выйти из профиля</a>
-                <p>user info: {current_user.get_id()}"""
+                <p>user info: """
 
 
 if __name__ == "__main__":
