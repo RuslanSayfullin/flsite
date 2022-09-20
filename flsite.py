@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from flask import Flask, render_template, g, url_for, request, flash, session, redirect, abort
+from flask import Flask, render_template, g, url_for, request, flash, session, redirect, abort, make_response
 
 from FDataBase import FDataBase
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -144,8 +144,19 @@ def logout():
 @app.route('/profile')
 @login_required
 def profile():
-    return f"""<p><a href="{url_for('logout')}">Выйти из профиля</a>
-                <p>user info: """
+    return render_template("profile.html", menu=dbase.getMenu(), title="Профиль")
+
+
+@app.route('/userava')
+@login_required
+def userava():
+    img = current_user.getAvatar(app)
+    if not img:
+        return ""
+
+    h = make_response(app)
+    h.headers['Content-Type'] = 'image/png'
+    return h
 
 
 if __name__ == "__main__":
