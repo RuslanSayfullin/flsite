@@ -85,3 +85,20 @@ def listpubs():
 
     return render_template('admin/listpubs.html', title='Список статей', menu=menu, list=list)
 
+
+@admin.route('/list-users')
+def listusers():
+    if not isLogged():
+        return redirect(url_for('.login'))
+
+    list = []
+    if db:
+        try:
+            cur = db.cursor()
+            cur.execute(f"SELECT name, email FROM users ORDER BY time DESC")
+            list = cur.fetchall()
+        except sqlite3.Error as e:
+            print("Ошибка получения статей из БД " + str(e))
+
+    return render_template('admin/listusers.html', title='Список пользователей', menu=menu, list=list)
+
