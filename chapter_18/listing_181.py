@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets
 import sys
 
+# Первая nроrрамма на PyQt6
 app = QtWidgets.QApplication(sys.argv)
 window = QtWidgets.QWidget()
 window.setWindowTitle("Пepвaя программа на PyQt")
