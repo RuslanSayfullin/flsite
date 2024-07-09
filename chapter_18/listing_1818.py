@@ -9,16 +9,19 @@ class MyThread(QtCore.QThread):
     def run(self):
         self.change_x()
     def change_x(self):
-        MyThread.mutex.lock()            # Блокируем
+        # Создаём автоблокировщик и тем самым накладываем блокировку
+        ml = QtCore.QMutexLocker(MyThread.mutex)
         print("x =", MyThread.x, "id =", self.id)
         MyThread.x += 5
         self.sleep(2)
         print("x =", MyThread.x, "id =", self.id)
         MyThread.x += 34
         print("x =", MyThread.x, "id =", self.id)
-        MyThread.mutex.unlock()          # Снимаем блокировку
+        # Здесь локальная переменная с автоблокировщиком будет уничтожена,
+        # автоблокировщик перестанет существовать, и блокировка снимется
 
 class MyWindow(QtWidgets.QPushButton):
+    """Использование автоблокировщика"""
     def __init__(self):
         QtWidgets.QPushButton.__init__(self)
         self.setText("Запустить")
