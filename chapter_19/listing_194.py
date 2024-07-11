@@ -1,6 +1,7 @@
 from PyQt6 import QtCore, QtWidgets
 
 class MyWindow(QtWidgets.QWidget):
+    """Разворачивание и сворачивание окна"""
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.btnMin = QtWidgets.QPushButton("Свернуть")
